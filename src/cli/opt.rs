@@ -101,6 +101,10 @@ pub struct Opt {
     #[cfg(feature = "editorconfig")]
     #[structopt(long)]
     pub no_editorconfig: bool,
+
+    /// Respect .styluaignore and glob matching for file paths provided directly to the tool
+    #[structopt(long)]
+    pub respect_ignores: bool,
 }
 
 #[derive(ArgEnum, Clone, Copy, Debug, PartialEq, Eq)]
@@ -239,6 +243,7 @@ convert_enum!(CallParenType, ArgCallParenType, {
     NoSingleString,
     NoSingleTable,
     None,
+    Input,
 });
 
 convert_enum!(CollapseSimpleStatement, ArgCollapseSimpleStatement, {

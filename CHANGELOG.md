@@ -9,11 +9,89 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fixed missing option `--sort-requires` to enable sort requires on the command line
+- Fixed handling of floor division (`//`) syntax when only Luau FFlag is enabled
+- Fixed missing space when table is inside of Luau interpolated string expression (`{{` is invalid syntax)
+
+## [0.19.1] - 2023-11-15
+
+This release has no changes. It resolves an issue in our test suite that may affect downstream package management tooling
+failing tests ([#824](https://github.com/JohnnyMorganz/StyLua/issues/824))
+
+## [0.19.0] - 2023-11-12
+
+### Added
+
+- Added flag `--respect-ignores`. By default, files explicitly passed to stylua (e.g. `stylua foo.lua`) will always be formatted, regardless of whether the file is ignored. Enabling this flag will consider `.styluaignore` or glob matches before formatting the file. ([#765](https://github.com/JohnnyMorganz/StyLua/issues/765))
+  - Note: for backwards compatibility reasons, formatting via stdin always respects ignores. This behaviour will change in the next major release
+
+### Changed
+
+- Updated parser crate with following changes:
+
+  - Support Luau floor division (`//`)
+  - Fix Luau string interpolation parsing
+  - Fix Luau `\z` escape parsing
+
+- Simplified access and modification patterns for StyLua configuration. You can now access the properties directly
+
+  - **Deprecated:** the old access patterns of `.property()` and `.with_property()` are now deprecated
+  - **Breaking Change (WASM):** due to JS/TS lack of differentiation between `.property` / `.property()` implementation, the `.property()` functions were removed from WASM output.
+
+- Multiline comments before commas will now remain in place and not move to after the comma. This is to support type-assertions-via-comments that is commonly used by some language servers. ([#778](https://github.com/JohnnyMorganz/StyLua/issues/778))
+
+### Fixed
+
+- Wasm build now correctly supports configuring sort requires ([#818](https://github.com/JohnnyMorganz/StyLua/issues/818))
+
+## [0.18.2] - 2023-09-10
+
+### Fixed
+
+- Fixed LuaJIT suffixes `LL`/`ULL` causing a panic when running in `--verify` mode ([#750](https://github.com/JohnnyMorganz/StyLua/issues/750))
+- Fixed incorrect formatting of conditionals when `collapse_simple_statement` is enabled and the block begins with an empty line ([#744](https://github.com/JohnnyMorganz/StyLua/issues/744))
+- Fixed formatting of dot function call chains with comment between dot and names ([#747](https://github.com/JohnnyMorganz/StyLua/issues/747))
+
+## [0.18.1] - 2023-07-15
+
+### Fixed
+
+- Fixed parentheses around a single Luau type pack in a generic being removed causing syntax errors ([#729](https://github.com/JohnnyMorganz/StyLua/issues/729))
+
+## [0.18.0] - 2023-06-14
+
+### Added
+
+- Multiline ignores (`-- stylua: ignore start` / `-- stylua: ignore end`) will now work within table fields ([#705](https://github.com/JohnnyMorganz/StyLua/issues/705)):
+
+```lua
+require("foo").bar {
+	-- stylua: ignore start
+	baz      =0, -- < not formatted
+	foo   =   2, -- < not formatted
+	-- stylua: ignore end
+	bar        =     1234 -- formatted
+}
+```
+
+- Added option `"Input"` to `call_parentheses` setting, where call parentheses are retained based on their presence in the original input code. ([#668](https://github.com/JohnnyMorganz/StyLua/issues/668))
+  Note: this setting removes all automation in determining call parentheses, and consistency is not enforced.
+
+### Changed
+
+- Improved heuristics around Luau type excess parentheses removal, so unnecessary types are removed in more locations
+
+### Fixed
+
+- Function calls are now formatted onto multiple lines if the opening brace `{` of a multiline table forces one of the lines over width ([#704](https://github.com/JohnnyMorganz/StyLua/issues/704))
+- Fixed missing option `--sort-requires` to enable sort requires on the command line ([#669](https://github.com/JohnnyMorganz/StyLua/issues/669))
 
 ```sh
 $ stylua --sort-requires test.lua
 ```
+
+- Fixed parentheses removed around Luau optional type `(B?)` causing syntax errors when present in an intersection `A & (B?)` ([#679](https://github.com/JohnnyMorganz/StyLua/issues/679))
+- Fixed comments lost when parentheses removed around Luau types
+- Fixed race condition where if a file is passed more than once as an argument to format, then it could potentially be wiped completely (for example, if an ancestor directory is passed and recursively searched, as well as the file itself) ([#708](https://github.com/JohnnyMorganz/StyLua/issues/708))
 
 ## [0.17.1] - 2023-03-30
 
@@ -661,7 +739,12 @@ This feature is enabled by default, it can be disabled using `--no-editorconfig`
 
 Initial alpha release
 
-[unreleased]: https://github.com/JohnnyMorganz/StyLua/compare/v0.17.1...HEAD
+[unreleased]: https://github.com/JohnnyMorganz/StyLua/compare/v0.19.1...HEAD
+[0.19.1]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v0.19.1
+[0.19.0]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v0.19.0
+[0.18.2]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v0.18.2
+[0.18.1]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v0.18.1
+[0.18.0]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v0.18.0
 [0.17.1]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v0.17.1
 [0.17.0]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v0.17.0
 [0.16.1]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v0.16.1

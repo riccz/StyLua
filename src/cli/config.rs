@@ -157,31 +157,31 @@ pub fn load_overrides(config: Config, opt: &Opt) -> Config {
     let mut new_config = config;
 
     if let Some(column_width) = opt.format_opts.column_width {
-        new_config = new_config.with_column_width(column_width);
+        new_config.column_width = column_width;
     };
     if let Some(line_endings) = opt.format_opts.line_endings {
-        new_config = new_config.with_line_endings(line_endings.into());
+        new_config.line_endings = line_endings.into();
     };
     if let Some(indent_type) = opt.format_opts.indent_type {
-        new_config = new_config.with_indent_type(indent_type.into());
+        new_config.indent_type = indent_type.into();
     };
     if let Some(indent_width) = opt.format_opts.indent_width {
-        new_config = new_config.with_indent_width(indent_width);
+        new_config.indent_width = indent_width;
     };
     if let Some(quote_style) = opt.format_opts.quote_style {
-        new_config = new_config.with_quote_style(quote_style.into());
+        new_config.quote_style = quote_style.into();
     };
     if let Some(call_parentheses) = opt.format_opts.call_parentheses {
-        new_config = new_config.with_call_parentheses(call_parentheses.into());
+        new_config.call_parentheses = call_parentheses.into();
     };
     if let Some(collapse_simple_statement) = opt.format_opts.collapse_simple_statement {
-        new_config = new_config.with_collapse_simple_statement(collapse_simple_statement.into());
+        new_config.collapse_simple_statement = collapse_simple_statement.into();
     }
     if opt.format_opts.sort_requires {
-        new_config = new_config.with_sort_requires(SortRequiresConfig::default().set_enabled(true))
+        new_config.sort_requires = SortRequiresConfig { enabled: true }
     }
     if opt.format_opts.semicolons {
-        new_config = new_config.with_semicolons(opt.format_opts.semicolons);
+        new_config.semicolons = opt.format_opts.semicolons;
     }
 
     new_config
@@ -198,7 +198,7 @@ mod tests {
         let override_opt = Opt::parse_from(vec!["BINARY_NAME", "--column-width", "80"]);
         let default_config = Config::new();
         let config = load_overrides(default_config, &override_opt);
-        assert_eq!(config.column_width(), 80);
+        assert_eq!(config.column_width, 80);
     }
 
     #[test]
@@ -206,7 +206,7 @@ mod tests {
         let override_opt = Opt::parse_from(vec!["BINARY_NAME", "--line-endings", "Windows"]);
         let default_config = Config::new();
         let config = load_overrides(default_config, &override_opt);
-        assert_eq!(config.line_endings(), LineEndings::Windows);
+        assert_eq!(config.line_endings, LineEndings::Windows);
     }
 
     #[test]
@@ -214,7 +214,7 @@ mod tests {
         let override_opt = Opt::parse_from(vec!["BINARY_NAME", "--indent-type", "Spaces"]);
         let default_config = Config::new();
         let config = load_overrides(default_config, &override_opt);
-        assert_eq!(config.indent_type(), IndentType::Spaces);
+        assert_eq!(config.indent_type, IndentType::Spaces);
     }
 
     #[test]
@@ -222,7 +222,7 @@ mod tests {
         let override_opt = Opt::parse_from(vec!["BINARY_NAME", "--indent-width", "2"]);
         let default_config = Config::new();
         let config = load_overrides(default_config, &override_opt);
-        assert_eq!(config.indent_width(), 2);
+        assert_eq!(config.indent_width, 2);
     }
 
     #[test]
@@ -230,7 +230,7 @@ mod tests {
         let override_opt = Opt::parse_from(vec!["BINARY_NAME", "--quote-style", "ForceSingle"]);
         let default_config = Config::new();
         let config = load_overrides(default_config, &override_opt);
-        assert_eq!(config.quote_style(), QuoteStyle::ForceSingle);
+        assert_eq!(config.quote_style, QuoteStyle::ForceSingle);
     }
 
     #[test]
@@ -238,6 +238,6 @@ mod tests {
         let override_opt = Opt::parse_from(vec!["BINARY_NAME", "--call-parentheses", "None"]);
         let default_config = Config::new();
         let config = load_overrides(default_config, &override_opt);
-        assert_eq!(config.call_parentheses(), CallParenType::None);
+        assert_eq!(config.call_parentheses, CallParenType::None);
     }
 }
