@@ -1,0 +1,9 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/generic-for.lua
+---
+for i, v in pairs(table) do
+	print(i, v);
+end
+

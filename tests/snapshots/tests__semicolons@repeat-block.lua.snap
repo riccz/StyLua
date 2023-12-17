@@ -1,0 +1,9 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/repeat-block.lua
+---
+repeat
+	x = x + 1;
+until true;
+

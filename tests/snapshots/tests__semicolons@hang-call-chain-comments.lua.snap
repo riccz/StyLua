@@ -1,0 +1,12 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/hang-call-chain-comments.lua
+---
+-- A
+a = A()
+	-- B
+	.B()
+	-- C
+	.C();
+

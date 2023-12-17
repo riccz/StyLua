@@ -1,0 +1,11 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/empty-function.lua
+---
+local function noop() end
+
+function noop() end
+
+call(function() end);
+

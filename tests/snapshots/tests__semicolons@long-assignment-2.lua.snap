@@ -1,0 +1,10 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/long-assignment-2.lua
+---
+do
+	local HitPart, HitPoint, HitNormal, HitMaterial =
+		nil, Ray.Origin + Ray.Direction, Vector3.new(0, 1, 0), Enum.Material.Air;
+end
+

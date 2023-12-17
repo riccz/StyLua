@@ -1,0 +1,11 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/return-hanging-expression.lua
+---
+function foo()
+	return fooooooooooooooooooo(barrr)
+		or foooooooooooooooooooooooooooooooooooooooooooooooooooooopppo(barrrrrrrrrrrrrr)(hello)
+		or bazzzzzzzzzzzzzzzzzz;
+end
+

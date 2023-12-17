@@ -1,0 +1,11 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/function-def-comments.lua
+---
+function func(
+	param_a, -- description of a
+	param_b -- description of b
+)
+end
+

@@ -1,0 +1,7 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/eof-1.lua
+---
+local x = 1;
+

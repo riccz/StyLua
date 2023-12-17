@@ -1,0 +1,13 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/comments-function-params.lua
+---
+function sayHello(
+	name, -- YourName
+	foo, --baz
+	greeting -- Message
+)
+	return greeting .. ", " .. name;
+end
+

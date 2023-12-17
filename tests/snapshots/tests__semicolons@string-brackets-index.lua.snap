@@ -1,0 +1,11 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/string-brackets-index.lua
+---
+local foo = {
+	[ [[test]] ] = true,
+};
+
+foo[ [[test]] ] = false;
+

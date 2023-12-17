@@ -1,0 +1,9 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/if-1.lua
+---
+if x == true then
+	return;
+end
+

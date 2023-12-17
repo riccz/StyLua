@@ -1,0 +1,10 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/condition-parentheses-comments.lua
+---
+-- https://github.com/JohnnyMorganz/StyLua/issues/389
+repeat
+	x = x + 1;
+until x + y < 2; -- comment
+

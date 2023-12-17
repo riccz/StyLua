@@ -1,0 +1,14 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/assignment-comments-3.lua
+---
+-- https://github.com/JohnnyMorganz/StyLua/issues/662
+local a, b =
+	1, -- adoc
+	2; -- bdoc
+
+local a, -- adoc
+	b -- bdoc
+	= 1, 2;
+

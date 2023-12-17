@@ -168,6 +168,8 @@ pub struct Config {
     collapse_simple_statement: CollapseSimpleStatement,
     /// Configuration for the sort requires codemod
     sort_requires: SortRequiresConfig,
+    /// End statements with semicolons
+    semicolons: bool,
 }
 
 #[cfg_attr(all(target_arch = "wasm32", feature = "wasm-bindgen"), wasm_bindgen)]
@@ -214,6 +216,11 @@ impl Config {
     /// Returns the current sort requires codemod configuration
     pub fn sort_requires(&self) -> SortRequiresConfig {
         self.sort_requires
+    }
+
+    /// Returns the current semicolons configuration
+    pub fn semicolons(&self) -> bool {
+        self.semicolons
     }
 
     /// Returns a new config with the given column width
@@ -288,6 +295,11 @@ impl Config {
             ..self
         }
     }
+
+    /// Returns a new config with the given semicolon configuration
+    pub fn with_semicolons(self, semicolons: bool) -> Self {
+        Self { semicolons, ..self }
+    }
 }
 
 impl Default for Config {
@@ -302,6 +314,7 @@ impl Default for Config {
             call_parentheses: CallParenType::default(),
             collapse_simple_statement: CollapseSimpleStatement::default(),
             sort_requires: SortRequiresConfig::default(),
+            semicolons: false,
         }
     }
 }

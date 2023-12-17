@@ -1,0 +1,21 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/function-call-8.lua
+---
+function_call(
+	(
+		"hello"
+		.. "darkness"
+		.. "my"
+		.. "old"
+		.. "friend"
+		.. "hello"
+		.. "darkness"
+		.. "my"
+		.. "old"
+		.. "friend"
+		.. "!!!!!!!!!!!!"
+	):call()
+);
+

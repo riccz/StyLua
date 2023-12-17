@@ -1,0 +1,9 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/long-assignment-3.lua
+---
+local something = fooooooooooooooo == barrrrrrrrrrrr
+		and func(arggggggggggggggggggggggggggggggggggggggggg1, argggggggggg2)
+	or somethingeeeeeeeeeeee;
+

@@ -1,0 +1,11 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/multiple-lines-betwen-statements.lua
+---
+local x = 1;
+
+local y = 2;
+
+local z = 3;
+

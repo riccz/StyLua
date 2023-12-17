@@ -1,0 +1,63 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/return-hanging-expression-3.lua
+---
+function foo()
+	return (
+		long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+	),
+		(
+			long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+		);
+end
+
+function foo()
+	return foo and bar or baz,
+		(
+			long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+			+ long_variable_name
+		);
+end
+
+function foo()
+	return not (
+		long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+		+ long_variable_name
+	);
+end
+

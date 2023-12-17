@@ -1,0 +1,11 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/return-comments-2.lua
+---
+-- https://github.com/JohnnyMorganz/StyLua/issues/662
+function f()
+	return a, -- adoc
+		b; -- bdoc
+end
+

@@ -1,0 +1,14 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/hang-call-chains-static.lua
+---
+-- https://github.com/JohnnyMorganz/StyLua/issues/368
+foo.bar("-------------------------------------------------------------------------------------------------------------")
+	.returns();
+foo.bar("--------------------------------------------------------------------------------------------------")
+	.returns()
+	.way()
+	.longer()
+	.chain();
+

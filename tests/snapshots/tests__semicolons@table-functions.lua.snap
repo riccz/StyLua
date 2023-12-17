@@ -1,0 +1,10 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/table-functions.lua
+---
+local foo = {};
+function foo.bar(baz)
+	print(x, y);
+end
+

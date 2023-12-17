@@ -1,0 +1,10 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/multiline-expressions-indent-block.lua
+---
+local expr = first_______________________________________________________________________________________________________
+	and function()
+		foo();
+	end;
+

@@ -1,0 +1,11 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/double-unary-minus.lua
+---
+local x = -(-foo);
+local y = -(-foo);
+
+local z1 = -(-foo); -- bar
+local z2 = -(-foo); -- baz
+

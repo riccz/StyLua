@@ -1,0 +1,8 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/table-2.lua
+---
+local foo =
+	{ "aaaa", "aaaa", "aaaa", "aaaa", "aaaa", "aaaa", "aaaa", "aaaa", "aaaa", "aaaa", "aaaa", "aaaa", "aaaa", "aaaa" };
+

@@ -1,0 +1,11 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/function-call-comments-2.lua
+---
+-- https://github.com/JohnnyMorganz/StyLua/issues/307#issuecomment-980594322
+call(
+	param_a, -- this is cool
+	param_b
+);
+

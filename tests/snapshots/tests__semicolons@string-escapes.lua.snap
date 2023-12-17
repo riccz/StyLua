@@ -1,0 +1,9 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/string-escapes.lua
+---
+local foo = "this 'string' has 'escaped' single quotes with \"double quotes\"";
+local bar = "test 'foo' \"bar\"";
+local baz = '\\"""';
+

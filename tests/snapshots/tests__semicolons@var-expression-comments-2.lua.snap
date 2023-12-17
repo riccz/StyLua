@@ -1,0 +1,9 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/var-expression-comments-2.lua
+---
+-- https://github.com/JohnnyMorganz/StyLua/issues/509
+local foo = bar -- comment after bar
+	.fizz; -- comment after fizz
+

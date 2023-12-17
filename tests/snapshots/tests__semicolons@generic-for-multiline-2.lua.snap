@@ -1,0 +1,22 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/generic-for-multiline-2.lua
+---
+-- https://github.com/JohnnyMorganz/StyLua/issues/579
+for _, item in
+	-- comment
+	call()
+do
+end
+
+for _, item in -- comment
+	call()
+do
+end
+
+for _, item in -- comment
+	call()
+do
+end
+

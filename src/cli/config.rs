@@ -180,6 +180,9 @@ pub fn load_overrides(config: Config, opt: &Opt) -> Config {
     if opt.format_opts.sort_requires {
         new_config = new_config.with_sort_requires(SortRequiresConfig::default().set_enabled(true))
     }
+    if opt.format_opts.semicolons {
+        new_config = new_config.with_semicolons(opt.format_opts.semicolons);
+    }
 
     new_config
 }

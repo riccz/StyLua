@@ -1,0 +1,9 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/while-1.lua
+---
+while true do
+	print("foo");
+end
+

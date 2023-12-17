@@ -1,0 +1,13 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/excess-parentheses-comments.lua
+---
+local foo = bar; -- test
+
+-- https://github.com/JohnnyMorganz/StyLua/issues/530
+call(
+	-- comment
+	foo
+);
+

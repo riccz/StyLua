@@ -179,6 +179,9 @@ pub struct FormatOpts {
     /// Enable requires sorting
     #[structopt(long)]
     pub sort_requires: bool,
+    /// Enable semicolons
+    #[structopt(long)]
+    pub semicolons: bool,
 }
 
 // Convert [`stylua_lib::Config`] enums into clap-friendly enums

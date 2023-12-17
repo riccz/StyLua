@@ -1,0 +1,13 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/if-comments.lua
+---
+if true then
+	-- foo
+elseif bar then
+	-- bar
+else
+	-- baz
+end
+

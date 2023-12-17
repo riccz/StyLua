@@ -1,0 +1,12 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/assignment-comments-2.lua
+---
+-- https://github.com/JohnnyMorganz/StyLua/issues/416
+local variable = call(
+	somethingToCall().foo.bar.baz,
+	"some super long string that will stay on this line aaaaaaaaaaaaaaaaa"
+) -- a comment
+	.. "another string";
+

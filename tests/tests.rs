@@ -16,6 +16,21 @@ fn test_standard() {
 }
 
 #[test]
+fn test_semicolons() {
+    insta::glob!("inputs-semicolons/*.lua", |path| {
+        let contents = std::fs::read_to_string(path).unwrap();
+        let formatted = format_code(
+            &contents,
+            Config::default().with_semicolons(true),
+            None,
+            OutputVerification::None,
+        )
+        .unwrap();
+        insta::assert_snapshot!(formatted);
+    })
+}
+
+#[test]
 #[cfg_attr(feature = "lua52", ignore)] // A test case has `goto` as an identifier, which is not allowed in Lua 5.2
 fn test_full_moon_test_suite() {
     insta::glob!("inputs-full_moon/*.lua", |path| {

@@ -1,0 +1,11 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/table-trailing-comma-comments.lua
+---
+-- https://github.com/JohnnyMorganz/StyLua/issues/547
+local too = {
+	x, -- string
+	y, -- string
+};
+

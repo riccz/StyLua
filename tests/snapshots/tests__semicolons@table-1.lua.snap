@@ -1,0 +1,50 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/table-1.lua
+---
+local foo = {
+	"bar",
+	"baz",
+	"foo",
+	"bar",
+	"baz",
+	"foo",
+	"bar",
+	"baz",
+	"foo",
+	"bar",
+	"baz",
+	"foo",
+	"bar",
+	"baz",
+	"foo",
+	"bar",
+	"baz",
+};
+
+local foo = {
+	"bar",
+	"baz",
+	"foo",
+	"bar",
+	"baz",
+	"foo",
+	"bar",
+	"baz",
+	"foo",
+	"bar",
+	"baz",
+	"foo",
+	"bar",
+	"baz",
+	"foo",
+	"bar",
+	"baz",
+	"foo",
+	"bar",
+	"baz",
+};
+
+local foo = {};
+

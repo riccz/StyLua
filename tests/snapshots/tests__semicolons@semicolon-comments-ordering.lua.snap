@@ -1,0 +1,8 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/semicolon-comments-ordering.lua
+---
+local foo = a <= b; --[[ some block comment ]] -- inline comment
+fn(); --[[ some block comment 2 ]] -- inline comment 2
+

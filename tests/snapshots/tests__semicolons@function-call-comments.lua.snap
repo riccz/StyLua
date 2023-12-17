@@ -1,0 +1,21 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/function-call-comments.lua
+---
+local AppRodux = RoactRodux.connect(
+	function(state, props)
+		return {};
+	end
+	-- function(dispatch)
+	--   return {
+	--     setCrossSize = function(crossSize)
+	--       dispatch({
+	--         type = "SetCrossSize",
+	--         crossSize = crossSize
+	--       })
+	--     end
+	--   }
+	-- end
+)(AppComponent);
+

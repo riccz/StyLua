@@ -1,0 +1,12 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/multiline-comments.lua
+---
+checkVisitorFnArgs(expect, ast, { ... }, true --[[ isEdited ]]);
+
+local test --[[foo]] = true;
+
+--[[test]]
+local x = true;
+

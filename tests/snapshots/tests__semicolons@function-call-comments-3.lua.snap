@@ -1,0 +1,8 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/function-call-comments-3.lua
+---
+-- https://github.com/JohnnyMorganz/StyLua/issues/473
+call(--[[-------------------------------------------------------------------------------------------------------------]]);
+

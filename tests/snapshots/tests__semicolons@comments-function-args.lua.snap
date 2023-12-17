@@ -1,0 +1,33 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/comments-function-args.lua
+---
+foo( -- comment
+	baz
+);
+
+foo(
+	baz, -- comment
+	bar
+);
+
+foo(
+	baz,
+	-- comment
+	bar
+);
+
+foo(
+	baz,
+	bar -- comment
+);
+
+foo(baz, bar); -- comment
+
+foo(
+	-- comment
+	baz,
+	bar
+);
+

@@ -1,0 +1,13 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/repeat-block-2.lua
+---
+local function foo(bar)
+	local count = 0;
+
+	repeat
+		count = count + 1;
+	until count == 10;
+end
+

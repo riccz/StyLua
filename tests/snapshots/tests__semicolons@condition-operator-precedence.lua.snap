@@ -1,0 +1,10 @@
+---
+source: tests/tests.rs
+expression: formatted
+input_file: tests/inputs-semicolons/condition-operator-precedence.lua
+---
+local instance = someReallyLongConditionExtremelyLongSoLongYourMindWillMelt
+		and someReallyLongCondition
+		and someOtherReallyLongCondition
+	or somethingElse;
+
